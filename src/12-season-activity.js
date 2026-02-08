@@ -31,5 +31,36 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+ 
+  if (month < 1 || month > 12 || typeof month !== 'number') {
+    return null;
+  }
+
+  let season = "";
+  let activity = "";
+
+  // 2. Determine the Season
+  if (month === 12 || month === 1 || month === 2) {
+    season = "Winter";
+  } else if (month >= 3 && month <= 5) {
+    season = "Spring";
+  } else if (month >= 6 && month <= 8) {
+    season = "Summer";
+  } else {
+    season = "Autumn";
+  }
+
+  // 3. Suggest Activity based on Season and Temperature
+  if (season === "Winter") {
+    activity = temperature < 0 ? "skiing" : "ice skating";
+  } else if (season === "Spring") {
+    activity = temperature > 20 ? "hiking" : "museum visit";
+  } else if (season === "Summer") {
+    activity = temperature > 35 ? "swimming" : "cycling";
+  } else if (season === "Autumn") {
+    activity = temperature > 15 ? "nature walk" : "reading at a cafe";
+  }
+
+  return { season, activity };
 }
+

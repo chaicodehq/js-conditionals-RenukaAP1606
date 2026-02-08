@@ -23,4 +23,26 @@
  */
 export function getTrafficAction(color) {
   // Your code here
+  
+  // Convert to lowercase to ensure case-insensitivity
+  // We also check if color is a string to avoid errors on .toLowerCase()
+  const signal = typeof color === 'string' ? color.toLowerCase() : "";
+
+  switch (signal) {
+    case "green":
+      return "GO";
+      
+    case "yellow":
+      return "SLOW DOWN";
+      
+    case "red":
+      return "STOP";
+      
+    case "flashing red":
+      return "STOP AND PROCEED WITH CAUTION";
+      
+    default:
+      return "INVALID SIGNAL";
+  }
 }
+
